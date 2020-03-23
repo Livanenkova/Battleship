@@ -53,15 +53,43 @@ isSunk: function(ship) {
 };
 
 function parseGuess(guess) {
-	var alphabet = ["A","B","C","D","E","F","G"];
+ var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
  if (guess === null || guess.length !== 2) {
  alert("Oops, please enter a letter and a number on the board.");
  } else {
- 	firstChar = guess.charAt(0);
- 	var row=alphabet.indexOf(firstChar);
- 	var column = guess.charAt(1);
+ firstChar = guess.charAt(0);
+ var row = alphabet.indexOf(firstChar);
+ var column = guess.charAt(1);
+
+ if (isNaN(row) || isNaN(column)) {
+ alert("Oops, that isn't on the board.");
+ } else if (row < 0 || row >= model.boardSize ||
+ column < 0 || column >= model.boardSize) {
+ alert("Oops, that's off the board!");
+ } else {
+ return row + column;
  }
+ }
+ return null;
 }
+
+var controller = {
+ guesses: 0,
+ processGuess: function(guess) {
+ var location = parseGuess(guess);
+ if (location) {
+ 	this.guess++;
+ 	var hit = model.fire(location);
+ }
+ }
+};
+
+
+// console.log(parseGuess("A0"));
+// console.log(parseGuess("B6"));
+// console.log(parseGuess("G3"));
+// console.log(parseGuess("H0"));
+// console.log(parseGuess("A7"));
 // model.fire("53");
 // model.fire("06");
 // model.fire("16");
