@@ -80,9 +80,26 @@ var controller = {
  if (location) {
  	this.guess++;
  	var hit = model.fire(location);
+ 	if (hit && model.shipsSunk === model.numShips) {
+ view.displayMessage("You sank all my battleships, in " +
+ this.guesses + " guesses");
+  }
  }
  }
 };
+
+
+
+controller.processGuess("A0");
+controller.processGuess("A6");
+controller.processGuess("B6");
+controller.processGuess("C6");
+controller.processGuess("C4");
+controller.processGuess("D4");
+controller.processGuess("E4");
+controller.processGuess("B0");
+controller.processGuess("B1");
+controller.processGuess("B2");
 
 
 // console.log(parseGuess("A0"));
