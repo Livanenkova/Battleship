@@ -28,14 +28,19 @@ var model = {
  var index = locations.indexOf(guess);
  if (index >= 0) {
  ship.hits[index] = "hit";
+ view.displayHit(guess);
+ view.displayMessage("HIT!");
  if (this.isSunk(ship)) {
+ 	view.displayMessage("You sank my battleship!");
  this.shipsSunk++;
  }
  return true;
  }
  }
+  view.displayMiss(guess);
+ view.displayMessage("You missed.");
  return false;
- }
+ },
 isSunk: function(ship) {
  for (var i = 0; i < this.shipLength; i++) {
  if (ship.hits[i] !== "hit") {
@@ -46,6 +51,19 @@ isSunk: function(ship) {
 }
 
 };
+
+model.fire("53");
+model.fire("06");
+model.fire("16");
+model.fire("26");
+model.fire("34");
+model.fire("24");
+model.fire("44");
+model.fire("12");
+model.fire("11");
+model.fire("10");
+model.fire("22");
+model.fire("23");
 
 // view.displayMiss("11");
 // view.displayHit("32");
