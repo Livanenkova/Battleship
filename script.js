@@ -52,18 +52,27 @@ isSunk: function(ship) {
 
 };
 
-model.fire("53");
-model.fire("06");
-model.fire("16");
-model.fire("26");
-model.fire("34");
-model.fire("24");
-model.fire("44");
-model.fire("12");
-model.fire("11");
-model.fire("10");
-model.fire("22");
-model.fire("23");
+function parseGuess(guess) {
+	var alphabet = ["A","B","C","D","E","F","G"];
+ if (guess === null || guess.length !== 2) {
+ alert("Oops, please enter a letter and a number on the board.");
+ } else {
+ 	firstChar=guess.charAt(0);
+ 	var row=alphabet.indexOf(firstChar);
+ }
+}
+// model.fire("53");
+// model.fire("06");
+// model.fire("16");
+// model.fire("26");
+// model.fire("34");
+// model.fire("24");
+// model.fire("44");
+// model.fire("12");
+// model.fire("11");
+// model.fire("10");
+// model.fire("22");
+// model.fire("23");
 
 // view.displayMiss("11");
 // view.displayHit("32");
