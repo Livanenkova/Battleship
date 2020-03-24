@@ -109,6 +109,26 @@ function handleKeyPress(e) {
  }
 }
 
+generateShipLocations: function() {
+ var locations;
+ for (var i = 0; i < this.numShips; i++) {
+ do {
+ locations = this.generateShip();
+ } while (this.collision(locations));
+ this.ships[i].locations = locations;
+ }
+},
+
+generateShip: function() {
+ var direction = Math.floor(Math.random() * 2);
+ var row, col;
+ if (direction === 1) {
+ // Сгенерировать начальную позицию для горизонтального корабля
+ } else {
+ // Сгенерировать начальную позицию для вертикального корабля
+ }
+
+ 
 window.onload = init;
 
 
